@@ -1,0 +1,15 @@
+const TOOLBAR_HEIGHT = 64
+const TOUCHABLE_OPACITY_ACTIVE_OPACITY= 0.8
+
+enum AttributeTypes {
+  TEXT,
+  NUMBER,
+  DATE,
+  CHECKBOX,
+}
+
+export {
+  TOOLBAR_HEIGHT,
+  TOUCHABLE_OPACITY_ACTIVE_OPACITY,
+  AttributeTypes
+};
