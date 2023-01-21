@@ -7,7 +7,6 @@ import {AttributeTypes} from "../constants/AppConstant";
 import moment from "moment";
 import CheckBox from "@react-native-community/checkbox";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import uuid from "react-native-uuid";
 
 interface CategoryProductViewProps {
     item: CategoryProductItem,
@@ -62,7 +61,7 @@ const generateInputField = (item: CategoryProductItem, setUserInput: Function, i
 const getDate = (field: CategoryField, value: any, setUserInput: Function, itemId: any, pressDate: Function, categoryId: any) => {
     return <TouchableOpacity style={styles.dateBoxRootStyle} onPress={() => {
         pressDate(field.id, value, itemId, field.id, categoryId)
-    }} key={uuid.v4().toString()}>
+    }} key={field.id.toString()}>
         <Text style={styles.textStyle}>{
             value && value !== '' ? moment(value).format('YYYY/MM/DD') : field.value
         }</Text>
@@ -70,7 +69,7 @@ const getDate = (field: CategoryField, value: any, setUserInput: Function, itemI
 }
 
 const getTextBox = (field: CategoryField, value: string, setUserInput: Function, itemId: any, categoryId: any, keyboardType = 'default') => {
-    return <View key={uuid.v4().toString()}>
+    return <View key={field.id.toString()}>
         <CustomTextInput setUserInput={(key: string, value: string) => {
             setUserInput(key, value, itemId, field.id, categoryId)
         }} inputKey={field.id} label={field.value} value={value} keyboardType={keyboardType}/>
@@ -79,7 +78,7 @@ const getTextBox = (field: CategoryField, value: string, setUserInput: Function,
 
 
 const getCheckBox = (field: CategoryField, value: any, setUserInput: Function, itemId: any, categoryId: any) => {
-    return <View style={styles.checkBoxRootStyle} key={uuid.v4().toString()}>
+    return <View style={styles.checkBoxRootStyle} key={field.id.toString()}>
         <CheckBox
             value={value && value == '' ? false : value}
             onValueChange={(newValue) => {

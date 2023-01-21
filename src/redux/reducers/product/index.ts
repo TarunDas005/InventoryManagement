@@ -80,22 +80,22 @@ const productReducer = (
                 })
 
                 draft.categoryProducts = draft.categoryProducts.map((categoryProduct, index) => {
-                    if (payload.fieldId == null) {
-                        if (categoryProduct.category.id == payload.categoryId) {
+                    if (payload.fieldId === null) {
+                        if (categoryProduct.category.id === payload.categoryId) {
                             return {
                                 ...categoryProduct,
-                                category: {...category, value: payload.value}
+                                category: {...categoryProduct.category, value: payload.value}
                             }
                         }
                     } else {
-                        if (categoryProduct.category.id == payload.categoryId) {
+                        if (categoryProduct.category.id === payload.categoryId) {
                             return {
                                 ...categoryProduct,
                                 data: categoryProduct.data.map((categoryProductItem, index) => {
                                     return {
                                         ...categoryProductItem,
                                         item: categoryProductItem.item.map((tField, index) => {
-                                            if (tField.field.id == payload.fieldId) {
+                                            if (tField.field.id === payload.fieldId) {
                                                 return {
                                                     ...tField,
                                                     field: {...tField.field, value: payload.value}
